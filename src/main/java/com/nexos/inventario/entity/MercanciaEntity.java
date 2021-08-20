@@ -2,10 +2,7 @@ package com.nexos.inventario.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -18,8 +15,10 @@ public class MercanciaEntity {
     private String nombre;
     private String cantidad;
     private String fechaIngreso;
-    private String usuarioRegis;
+
+    @ManyToOne
+    private PersonaEntity personaEntity;
 
     @OneToMany(mappedBy = "mercanciaEntity")
-    private List<ActualizacionMercancia> actualizacionMercancias;
+    private List<ActualizacionMercanciaEntity> actualizacionMercanciaEntities;
 }

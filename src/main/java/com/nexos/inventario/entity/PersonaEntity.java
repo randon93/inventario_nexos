@@ -14,9 +14,13 @@ public class PersonaEntity {
     private String id;
     private String nombre;
 
+
     @ManyToOne
     private CargoEntity cargoEntity;
 
     @OneToMany(mappedBy = "personaEntity")
-    private List<ActualizacionMercancia> actualizacionMercancias;
+    private List<MercanciaEntity> mercanciaEntities;
+
+    @OneToMany(mappedBy = "personaEntity")
+    private List<ActualizacionMercanciaEntity> actualizacionMercanciaEntities;
 }
