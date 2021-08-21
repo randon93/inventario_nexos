@@ -1,6 +1,7 @@
 package com.nexos.inventario.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,16 +12,17 @@ import java.util.List;
 public class PersonaEntity {
 
     @Id
-    private String id;
+    private Long id;
     private String nombre;
 
 
     @ManyToOne
-    private CargoEntity cargoEntity;
+    @ToString.Exclude
+    private CargoEntity cargo;
 
-    @OneToMany(mappedBy = "personaEntity")
-    private List<MercanciaEntity> mercanciaEntities;
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
+    private List<MercanciaEntity> mercancias;
 
-    @OneToMany(mappedBy = "personaEntity")
-    private List<ActualizacionMercanciaEntity> actualizacionMercanciaEntities;
+    @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY)
+    private List<ActualizarMercanciaEntity> actualizacionMercancias;
 }

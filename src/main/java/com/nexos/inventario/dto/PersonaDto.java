@@ -7,10 +7,10 @@ import java.util.List;
 @Data
 public class PersonaDto {
 
-    private String id;
+    private Long id;
     private String nombre;
     private CargoDto cargoDto;
-    private List<MercanciaDto> mercanciaDtos;
-    private List<ActualizarMercanciaDto> actualizarMercanciaDtos;
+    private List<MercanciaDto> mercancias;
+    private List<ActualizarMercanciaDto> actualizarMercancias;
 
 }

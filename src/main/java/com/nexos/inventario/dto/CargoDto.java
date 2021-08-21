@@ -1,16 +1,19 @@
 package com.nexos.inventario.dto;
 
-import com.nexos.inventario.entity.PersonaEntity;
-import lombok.Data;
+import lombok.Getter;
 
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.util.List;
 
-@Data
+@Getter
 public class CargoDto {
 
     private Long id;
     private String nombre;
-    private List<PersonaDto> personaDtos;
+    private List<PersonaDto> personas;
+
+    public CargoDto(Long id, String nombre, List<PersonaDto> personas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.personas = personas;
+    }
 }

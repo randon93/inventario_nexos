@@ -7,9 +7,11 @@ import com.nexos.inventario.entity.CargoEntity;
 import com.nexos.inventario.excepcion.ExcepcionDuplicidad;
 import com.nexos.inventario.service.cargo.CrearCargoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Service
 public class CrearCargoServiceImpl implements CrearCargoService {
 
     @Autowired
@@ -19,10 +21,9 @@ public class CrearCargoServiceImpl implements CrearCargoService {
     private CargoMapper cargoMapper;
 
     @Override
-    public String ejecutar(CargoDto cargoDto) {
-        validarNombreCargo(cargoDto.getNombre());
-        CargoEntity cargoEntity = cargoMapper.cargoDtoToCargoEnity(cargoDto);
-        return cargoDao.save(cargoEntity).getNombre();
+    public Long ejecutar(CargoEntity cargoEntity) {
+        validarNombreCargo(cargoEntity.getNombre());
+        return cargoDao.save(cargoEntity).getId();
     }
 
     private void validarNombreCargo(String nombre) {

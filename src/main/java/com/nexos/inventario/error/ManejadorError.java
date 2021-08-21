@@ -3,7 +3,7 @@ package com.nexos.inventario.error;
 import com.nexos.inventario.excepcion.ExcepcionCantidadInsuficiente;
 import com.nexos.inventario.excepcion.ExcepcionConStock;
 import com.nexos.inventario.excepcion.ExcepcionDuplicidad;
-import com.nexos.inventario.excepcion.ExcepcionFinDeMes;
+import com.nexos.inventario.excepcion.ExcepcionFechaNoValida;
 import com.nexos.inventario.excepcion.ExcepcionLongitudValor;
 import com.nexos.inventario.excepcion.ExcepcionObjectoNoEncontrado;
 import com.nexos.inventario.excepcion.ExcepcionSinDatos;
@@ -36,7 +36,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         CODIGOS_ESTADO.put(ExcepcionDuplicidad.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionConStock.class.getSimpleName(), HttpStatus.NOT_ACCEPTABLE.value());
         CODIGOS_ESTADO.put(ExcepcionObjectoNoEncontrado.class.getSimpleName(), HttpStatus.NOT_FOUND.value());
-        CODIGOS_ESTADO.put(ExcepcionFinDeMes.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionFechaNoValida.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionCantidadInsuficiente.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
 
         //en caso de tener otra excepcion matricularla aca

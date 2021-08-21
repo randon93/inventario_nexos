@@ -1,8 +1,10 @@
 package com.nexos.inventario.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -11,14 +13,15 @@ import java.util.List;
 public class MercanciaEntity {
 
     @Id
-    private String id;
+    private Long id;
     private String nombre;
     private String cantidad;
-    private String fechaIngreso;
+    private LocalDateTime fechaIngreso;
 
     @ManyToOne
-    private PersonaEntity personaEntity;
+    @ToString.Exclude
+    private PersonaEntity persona;
 
-    @OneToMany(mappedBy = "mercanciaEntity")
-    private List<ActualizacionMercanciaEntity> actualizacionMercanciaEntities;
+    @OneToMany(mappedBy = "mercancia", fetch = FetchType.LAZY)
+    private List<ActualizarMercanciaEntity> actualizacionMercancias;
 }
