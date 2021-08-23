@@ -42,13 +42,14 @@ public class ActualizarMercanciaServiceImpl implements ActualizarMercanciaServic
 
 
     private void actualizar(MercanciaEntity mercanciaDtoEntityNueva, PersonaEntity usuarioAct) {
-        MercanciaEntity mercanciaEntityVieja = mercanciaDao.findByNombre(mercanciaDtoEntityNueva.getNombre()).get();
+        MercanciaEntity mercanciaEntityVieja = mercanciaDao.findById(mercanciaDtoEntityNueva.getId()).get();
         ActualizarMercanciaEntity entity = new ActualizarMercanciaEntity();
         entity.setFecha(LocalDateTime.now());
         entity.setMercancia(mercanciaEntityVieja);
         entity.setPersona(usuarioAct);
         entity.setObjetoViejo(mercanciaEntityVieja.toString());
         entity.setObjetoNuevo(mercanciaDtoEntityNueva.toString());
+        entity.setId(mercanciaDtoEntityNueva.getId());
         actualizarMercanciaDao.save(entity);
     }
 }

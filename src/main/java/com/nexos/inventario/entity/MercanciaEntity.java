@@ -18,7 +18,7 @@ public class MercanciaEntity {
     private String cantidad;
     private LocalDateTime fechaIngreso;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private PersonaEntity persona;
 
